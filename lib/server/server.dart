@@ -39,6 +39,9 @@ class Server {
     );
   }
 
+  /// Get all device addresses for a user by name
+  ///
+  /// This supports multiple devices per user, as each device has a unique deviceId
   List<SignalProtocolAddress> getUserAddressesByName(final String name) {
     return _userData.entries.where((userData) => userData.key.getName() == name).map((e) => e.key).toList();
   }
