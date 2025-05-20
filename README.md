@@ -20,7 +20,6 @@ This repository serves as a technical demonstration of Signal Protocol implement
 
 - Flutter `>=3.7.2`
 - Dart `>=3.7.2`
-- A running instance of the Signal Protocol server (for integration tests)
 
 ## 🛠️ Installation
 
@@ -82,25 +81,25 @@ Immutable state management using Freezed, containing:
 ```
 lib/
 ├── client/
-│   ├── signal_client.dart         # Signal Protocol implementation
-│   └── signal_client.freezed.dart # Generated immutable state
+│   ├── signal_client.dart             # Signal Protocol implementation
+│   └── signal_client.freezed.dart     # Generated immutable state
 ├── common/
 │   └── models/
-│       ├── message.dart           # Message structure
-│       └── group_message.dart     # Group message support
+│       ├── message.dart               # Message structure
+│       └── group_message.dart         # Group message support
 ├── server/
 │   ├── models/
-│   │   ├── user_keys.dart         # PreKey bundle model
-│   │   ├── public_prekey.dart     # Public PreKey structure
-│   │   └── public_signed_prekey.dart # Signed PreKey structure
-│   └── server.dart                # Server API client
+│   │   ├── user_keys.dart             # PreKey bundle model
+│   │   ├── public_prekey.dart         # Public PreKey structure
+│   │   └── public_signed_prekey.dart  # Signed PreKey structure
+│   └── server.dart                    # Server API client
 └── utils/
-    └── logger.dart                # Logging utility
+    └── logger.dart                    # Logging utility
 
 test/
-├── signal_protocol_test.dart      # Comprehensive test scenarios
-├── key_reuse_test.dart            # Tests for key reuse prevention
-└── multi_device_test.dart         # Tests for multi-device support
+├── signal_protocol_test.dart          # Comprehensive test scenarios
+├── key_reuse_test.dart                # Tests for key reuse prevention
+└── multi_device_test.dart             # Tests for multi-device support
 ```
 
 ## 🧪 Understanding the Implementation Through Tests
@@ -168,7 +167,9 @@ flutter test --name "should establish session and exchange messages"
    - Validates security against key reuse attacks
    - Tests proper key rotation mechanisms
 
-Each test includes comprehensive logging that explains what's happening at each step of the protocol.
+Each test includes comprehensive logging that explains what's happening at each step of the protocol. This can also be seen in the test workflow: https://github.com/stdNullPtr/Flutter-Signal-Protocol-PoC/actions  
+![image](https://github.com/user-attachments/assets/ebf832f5-aa33-473b-b2c2-25abf8f451d3)
+
 
 ## 🔍 Key Components Explained
 
