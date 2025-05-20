@@ -19,21 +19,21 @@ This repository serves as a technical demonstration of Signal Protocol implement
 
 ## 📋 Requirements
 
-- Flutter `>=3.7.2`
-- Dart `>=3.7.2`
+- Flutter `>=3.7.2` (Developed with 3.16.9)
+- Dart `>=3.7.2` (Developed with 3.2.6)
 
 ## 🛠️ Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/stdNullPtr/flutter_signal_protocol_client_poc
-cd flutter_signal_protocol_client_poc
+git clone https://github.com/stdNullPtr/Flutter-Signal-Protocol-PoC.git
+cd Flutter-Signal-Protocol-PoC
 
 # Install dependencies
 flutter pub get
 
 # Generate Freezed code
-dart run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ## 🏗️ Architecture
@@ -168,8 +168,9 @@ flutter test --name "should establish session and exchange messages"
    - Validates security against key reuse attacks
    - Tests proper key rotation mechanisms
 
-Each test includes comprehensive logging that explains what's happening at each step of the protocol. This can also be seen in the test workflow: https://github.com/stdNullPtr/Flutter-Signal-Protocol-PoC/actions  
-![image](https://github.com/user-attachments/assets/ebf832f5-aa33-473b-b2c2-25abf8f451d3)
+Each test includes comprehensive logging that explains what's happening at each step of the protocol. To see detailed logs while running tests, use the `--reporter expanded` flag. The test output can also be seen in the GitHub Actions workflow: https://github.com/stdNullPtr/Flutter-Signal-Protocol-PoC/actions  
+
+![Signal Protocol Test Workflow](https://github.com/user-attachments/assets/ebf832f5-aa33-473b-b2c2-25abf8f451d3)
 
 
 ## 🔍 Key Components Explained
@@ -253,6 +254,8 @@ To understand the Signal Protocol implementation:
 The PoC implements proper session acknowledgment, which is crucial for the Double Ratchet algorithm:
 - Initial messages use PreKey messages (containing X3DH materials)
 - After session establishment, a cryptographic acknowledgment occurs
+- When receiving a PreKey message, the receiver creates a session
+- The receiver acknowledges the session by clearing unacknowledged PreKey flag
 - Subsequent messages use the more efficient "whisper" message type
 - This follows the Signal Protocol's security design for session establishment
 
@@ -275,7 +278,7 @@ Group messaging is implemented using sender keys:
 ## 🔗 References
 
 - [Signal Protocol Documentation](https://signal.org/docs/)
-- [libsignal_protocol_dart](https://pub.dev/packages/libsignal_protocol_dart)
+- [libsignal_protocol_dart](https://pub.dev/packages/libsignal_protocol_dart) - The Dart implementation of Signal Protocol used in this project
 - [The X3DH Key Agreement Protocol](https://signal.org/docs/specifications/x3dh/)
 - [The Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
 - [Sender Keys for Group Messaging](https://signal.org/docs/specifications/group-sessions/)
