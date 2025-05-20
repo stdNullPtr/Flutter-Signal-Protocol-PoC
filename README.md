@@ -1,6 +1,6 @@
 # Flutter Signal Protocol Client - Proof of Concept
 
-A proof-of-concept implementation of the Signal Protocol in Flutter/Dart, demonstrating end-to-end encrypted messaging through executable test scenarios.
+A proof-of-concept implementation of the Signal Protocol in Flutter/Dart, demonstrating end-to-end encrypted messaging through executable test scenarios. Credites go to https://github.com/MixinNetwork/libsignal_protocol_dart for the core implementation of the protocol for Dart.
 
 ## 🎯 Purpose
 
